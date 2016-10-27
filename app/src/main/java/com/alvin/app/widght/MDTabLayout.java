@@ -3,6 +3,7 @@ package com.alvin.app.widght;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
@@ -78,6 +79,10 @@ public class MDTabLayout extends LinearLayout {
         mNormalItemColor = normalItemColor;
     }
 
+    public void setItemCheckedListener(ItemCheckedListener itemCheckedListener) {
+        mItemCheckedListener = itemCheckedListener;
+    }
+
     private DataSetObserver mObserver = new DataSetObserver() {
         @Override
         public void onChanged() {
@@ -101,7 +106,7 @@ public class MDTabLayout extends LinearLayout {
     private RippleButton buildRipple(final int pos) {
         RippleButton ripple = new RippleButton(getContext());
         ripple.setGravity(Gravity.CENTER);
-        ripple.setRippleColor(getResources().getColor(android.R.color.darker_gray));
+        ripple.setRippleColor(Color.argb(34, 225, 64, 129));
         ripple.setTextSize(TypedValue.COMPLEX_UNIT_PX, 20);
         ripple.setPadding(0, 20, 0, 20);
         ripple.setTextColor(mNormalItemColor);
@@ -142,6 +147,7 @@ public class MDTabLayout extends LinearLayout {
                 if (null != drawable) {
                     drawable.setColorFilter(new PorterDuffColorFilter(mCheckedItemColor,
                             PorterDuff.Mode.SRC_IN));
+//                    drawable.setColorFilter();
                 }
                 continue;
             }
@@ -152,6 +158,10 @@ public class MDTabLayout extends LinearLayout {
             }
 
         }
+    }
+
+    public void setItemChecked(int itemChecked) {
+        itemChecked(itemChecked);
     }
 
     public interface ItemCheckedListener {

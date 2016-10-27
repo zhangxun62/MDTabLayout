@@ -4,7 +4,7 @@
         <attr name="rippleColor" format="color"/>
     </declare-styleable>
     <declare-styleable name="MDTabLayout">
-        <attr name="checkedItemColor" format="color"/>
-        <attr name="normalItemColor" format="color"/>
+        <attr name="checkedItemColor" format="color|reference"/>
+        <attr name="normalItemColor" format="color|reference"/>
     </declare-styleable>
 </resources>
