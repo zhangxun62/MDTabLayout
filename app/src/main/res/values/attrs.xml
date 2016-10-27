@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RippleButton">
+        <attr name="rippleColor" format="color"/>
+    </declare-styleable>
+    <declare-styleable name="MDTabLayout">
+        <attr name="checkedItemColor" format="color"/>
+        <attr name="normalItemColor" format="color"/>
+    </declare-styleable>
+</resources>
