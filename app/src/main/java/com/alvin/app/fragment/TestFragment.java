@@ -21,6 +21,7 @@ public class TestFragment extends Fragment {
     private LinearLayout mLinearLayout;
     private String mTitle;
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

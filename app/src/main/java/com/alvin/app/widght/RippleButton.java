@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,7 +21,7 @@ import com.alvin.app.R;
  * @Date: 2016/10/26.15:10
  * @E-mail: 49467306@qq.com
  */
-public class RippleButton extends TextView {
+public class RippleButton extends AppCompatTextView {
     /**
      * 波纹画笔
      */

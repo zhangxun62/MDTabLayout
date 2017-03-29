@@ -103,6 +103,11 @@ public class MDTabLayout extends LinearLayout {
     };
 
 
+    /**
+     * 创建子控件
+     * @param pos
+     * @return
+     */
     private RippleButton buildRipple(final int pos) {
         RippleButton ripple = new RippleButton(getContext());
         ripple.setGravity(Gravity.CENTER);
@@ -127,6 +132,10 @@ public class MDTabLayout extends LinearLayout {
         return ripple;
     }
 
+    /**
+     * 子控件被选中
+     * @param pos
+     */
     private void itemChecked(int pos) {
         mCheckedPosition = pos;
         int itemCount = getChildCount();
