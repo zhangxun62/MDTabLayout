@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
+import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -46,6 +47,21 @@ public class MDTabLayout extends LinearLayout {
      * 选中的位置
      */
     private int mCheckedPosition;
+    /**
+     * 字体放大百分比
+     */
+    private float mCheckedSizePercent;
+
+    /**
+     * 字体大小
+     */
+    private float mTextSize;
+
+    /**
+     * 子控件top和bottom的间隔
+     */
+    private int mTabPadding;
+
 
     public MDTabLayout(Context context) {
         this(context, null);
@@ -61,6 +77,10 @@ public class MDTabLayout extends LinearLayout {
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.MDTabLayout, defStyleAttr, 0);
         mCheckedItemColor = typedArray.getColor(R.styleable.MDTabLayout_checkedItemColor, getResources().getColor(android.R.color.holo_orange_light));
         mNormalItemColor = typedArray.getColor(R.styleable.MDTabLayout_normalItemColor, 0xFF444444);
+        mCheckedSizePercent = typedArray.getFraction(R.styleable.MDTabLayout_checked_percent, 1, 1, 1);
+        mTextSize = typedArray.getDimensionPixelSize(R.styleable.MDTabLayout_android_textSize, 15);
+        mTabPadding = typedArray.getDimensionPixelSize(R.styleable.MDTabLayout_tab_padding, 0);
+        typedArray.recycle();
         params = new LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 
@@ -105,6 +125,7 @@ public class MDTabLayout extends LinearLayout {
 
     /**
      * 创建子控件
+     *
      * @param pos
      * @return
      */
@@ -112,8 +133,8 @@ public class MDTabLayout extends LinearLayout {
         RippleButton ripple = new RippleButton(getContext());
         ripple.setGravity(Gravity.CENTER);
         ripple.setRippleColor(Color.argb(34, 225, 64, 129));
-        ripple.setTextSize(TypedValue.COMPLEX_UNIT_PX, 20);
-        ripple.setPadding(0, 20, 0, 20);
+        ripple.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize);
+        ripple.setPadding(0, mTabPadding, 0, mTabPadding);
         ripple.setTextColor(mNormalItemColor);
         ripple.setText(mAdapter.getText(pos));
 
@@ -134,6 +155,7 @@ public class MDTabLayout extends LinearLayout {
 
     /**
      * 子控件被选中
+     *
      * @param pos
      */
     private void itemChecked(int pos) {
@@ -151,7 +173,7 @@ public class MDTabLayout extends LinearLayout {
             rippleButton.cancel();
             drawable = rippleButton.getCompoundDrawables()[1];
             if (i == mCheckedPosition) {
-                rippleButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, 30);
+                rippleButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, mCheckedSizePercent * mTextSize);
                 rippleButton.setTextColor(mCheckedItemColor);
                 if (null != drawable) {
                     drawable.setColorFilter(new PorterDuffColorFilter(mCheckedItemColor,
@@ -160,7 +182,7 @@ public class MDTabLayout extends LinearLayout {
                 }
                 continue;
             }
-            rippleButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, 20);
+            rippleButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize);
             rippleButton.setTextColor(mNormalItemColor);
             if (drawable != null) {
                 drawable.clearColorFilter();
@@ -169,6 +191,11 @@ public class MDTabLayout extends LinearLayout {
         }
     }
 
+    /**
+     * 设置默认选中的子控件
+     *
+     * @param itemChecked
+     */
     public void setItemChecked(int itemChecked) {
         itemChecked(itemChecked);
     }
@@ -177,5 +204,28 @@ public class MDTabLayout extends LinearLayout {
         void onItemChecked(int position, View view);
     }
 
+    /**
+     * 与viewpager绑定
+     *
+     * @param pager
+     */
+    public void setupWithViewPager(ViewPager pager) {
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                itemChecked(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
 
 }

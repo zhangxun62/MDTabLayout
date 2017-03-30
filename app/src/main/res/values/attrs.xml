@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="RippleButton">
-        <attr name="rippleColor" format="color"/>
-    </declare-styleable>
     <declare-styleable name="MDTabLayout">
         <attr name="checkedItemColor" format="color|reference"/>
         <attr name="normalItemColor" format="color|reference"/>
+        <attr name="checked_percent" format="fraction"/>
+        <attr name="rippleColor" format="color"/>
+        <attr name="android:textSize"/>
+        <attr name="tab_padding" format="dimension|reference"/>
     </declare-styleable>
 </resources>

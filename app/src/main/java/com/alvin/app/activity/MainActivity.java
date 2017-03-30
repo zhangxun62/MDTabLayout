@@ -39,9 +39,11 @@ public class MainActivity extends AppCompatActivity {
         mMDTabLayout.setItemCheckedListener(new MDTabLayout.ItemCheckedListener() {
             @Override
             public void onItemChecked(int position, View view) {
-                    mViewPager.setCurrentItem(position);
+                mViewPager.setCurrentItem(position);
             }
         });
+
+        mMDTabLayout.setupWithViewPager(mViewPager);
         mFragmentPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {

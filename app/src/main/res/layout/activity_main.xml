@@ -16,10 +16,14 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        android:textSize="12sp"
         app:checkedItemColor="#ff4081"
+        app:checked_percent="130%"
         app:layout_behavior="com.alvin.app.widght.MDTabBehavior"
         app:normalItemColor="#444"
-        android:layout_gravity="bottom"
+        app:tab_padding="5dp"
     >
     </com.alvin.app.widght.MDTabLayout>
 </android.support.design.widget.CoordinatorLayout>

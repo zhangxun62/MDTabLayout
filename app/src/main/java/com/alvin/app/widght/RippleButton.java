@@ -81,8 +81,8 @@ public class RippleButton extends AppCompatTextView {
     }
 
     private void resolveAttrs(Context context, AttributeSet attrs, int defStyle) {
-        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.RippleButton, defStyle, 0);
-        mPaint.setColor(typedArray.getColor(R.styleable.RippleButton_rippleColor, Color.GREEN));
+        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.MDTabLayout, defStyle, 0);
+        mPaint.setColor(typedArray.getColor(R.styleable.MDTabLayout_rippleColor, Color.GREEN));
         typedArray.recycle();
     }
 

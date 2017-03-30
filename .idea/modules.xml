@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MDTabLayout.iml" filepath="$PROJECT_DIR$/MDTabLayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mdtab/mdtab.iml" filepath="$PROJECT_DIR$/mdtab/mdtab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mdtabsamples/mdtabsamples.iml" filepath="$PROJECT_DIR$/mdtabsamples/mdtabsamples.iml" />
     </modules>
   </component>
 </project>
